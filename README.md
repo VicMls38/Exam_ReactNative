@@ -1,7 +1,7 @@
 # Application React-Native "Hybrid friend"
 
 ## Stack
-React-Native, Expo
+React-Native, Typescript, Expo
 
 ## Get started
 
@@ -19,7 +19,7 @@ React-Native, Expo
 
 ## Description
 
-Lors d'un exam il fallait créer cette application uniquement avec chatGPT 
+Lors d'un exam il fallait créer cette application uniquement avec chatGPT, nous ne devions touché au code manuellement
 
 
 ## Fonctionnalités 
