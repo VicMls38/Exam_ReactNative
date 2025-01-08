@@ -80,6 +80,16 @@ export default function TabLayout() {
           ),
         }}
       />
+      {/* Onglet Map */}
+      <Tabs.Screen
+        name="counter"
+        options={{
+          title: 'Count',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="counter" size={28} color={color} /> // Remplacement par l'icône "map"
+          ),
+        }}
+      />
 
       {/* Onglet Quitter */}
       <Tabs.Screen

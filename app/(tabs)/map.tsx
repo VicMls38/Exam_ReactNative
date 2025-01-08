@@ -21,8 +21,8 @@ export default function Explore() {
       setRegion({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
-        latitudeDelta: 10.0,  // Pour avoir un zoom suffisant pour voir toute la France
-        longitudeDelta: 12.0, // Ajuster pour que la carte couvre toute la France
+        latitudeDelta: 8.0,  // Pour avoir un zoom suffisant pour voir toute la France
+        longitudeDelta: 10.0, // Ajuster pour que la carte couvre toute la France
       });
     };
 
