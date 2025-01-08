@@ -1,11 +1,18 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform, Alert, BackHandler } from 'react-native';
+import {
+  Platform,
+  Alert,
+  BackHandler,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; // Importation des icônes MaterialCommunityIcons
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'; // Importation des types nécessaires
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -41,8 +48,9 @@ export default function TabLayout() {
         tabBarIconStyle: {
           marginTop: 5, // Espace entre l'icône et le haut
         },
-      }}>
-      {/* Onglet Chat (animal) */}
+      }}
+    >
+      {/* Onglet Chat */}
       <Tabs.Screen
         name="index"
         options={{
@@ -62,13 +70,37 @@ export default function TabLayout() {
           ),
         }}
       />
+      {/* Onglet Map */}
+      <Tabs.Screen
+        name="map"
+        options={{
+          title: 'Map',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="map" size={28} color={color} /> // Remplacement par l'icône "map"
+          ),
+        }}
+      />
+
       {/* Onglet Quitter */}
       <Tabs.Screen
         name="exit"
         options={{
           title: 'Quitter',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="exit-to-app" size={28} color={color} />
+          tabBarButton: (props: BottomTabBarButtonProps) => (
+            <TouchableOpacity
+              {...props}
+              onPress={(event: GestureResponderEvent) => {
+                // Appel à la fonction existante pour quitter
+                props.onPress?.(event); // Appelle la fonction par défaut (si définie)
+                handleExit(); // Affiche l'alerte pour quitter
+              }}
+            >
+              <MaterialCommunityIcons
+                name="exit-to-app"
+                size={28}
+                color={Colors[colorScheme ?? 'light'].tint}
+              />
+            </TouchableOpacity>
           ),
         }}
       />
