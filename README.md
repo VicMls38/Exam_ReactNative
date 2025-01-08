@@ -5,13 +5,13 @@ React-Native, Typescript, Expo
 
 ## Get started
 
-1. Install dependencies
+1. Installer les prérequis
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. Lancer l'application
 
    ```bash
     npx expo start
