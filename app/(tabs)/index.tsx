@@ -45,9 +45,13 @@ export default function HomeScreen() {
 
   // Fonction pour incrémenter le compteur et le stocker dans AsyncStorage
   const incrementChatCount = async () => {
-    const currentCount = await AsyncStorage.getItem('chatCount');
-    const newCount = currentCount ? parseInt(currentCount, 10) + 1 : 1;
-    await AsyncStorage.setItem('chatCount', newCount.toString()); // Sauvegarde le compteur dans AsyncStorage
+    try {
+      const currentCount = await AsyncStorage.getItem('chatCount');
+      const newCount = currentCount ? parseInt(currentCount, 10) + 1 : 1;
+      await AsyncStorage.setItem('chatCount', newCount.toString()); // Sauvegarde le compteur dans AsyncStorage
+    } catch (error) {
+      console.error('Erreur lors de l\'incrémentation du compteur du chat :', error);
+    }
   };
 
   // Utilisation de useEffect pour récupérer le niveau de la batterie à chaque fois que le composant se charge

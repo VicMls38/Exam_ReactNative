@@ -25,12 +25,19 @@ export default function Explore() {
 
   // Fonction pour incrémenter le compteur du chien et le stocker dans AsyncStorage
   const incrementDogCount = async () => {
-    const newCount = dogCount + 1;
-    setDogCount(newCount); // Mise à jour de l'état local
     try {
-      await AsyncStorage.setItem('chatCount', newCount.toString()); // Mise à jour dans AsyncStorage
+      // Récupérer la valeur actuelle du compteur dans AsyncStorage
+      const storedCount = await AsyncStorage.getItem('dogCount');
+      const currentCount = storedCount ? parseInt(storedCount) : 0; // Si pas de valeur, commencer à 0
+      const newCount = currentCount + 1; // Incrémenter la valeur
+
+      // Mise à jour de l'état local
+      setDogCount(newCount);
+
+      // Mise à jour de AsyncStorage avec le nouveau compteur
+      await AsyncStorage.setItem('dogCount', newCount.toString());
     } catch (error) {
-      console.error('Erreur lors de l\'enregistrement du compteur du chat :', error);
+      console.error('Erreur lors de l\'enregistrement du compteur du chien :', error);
     }
   };
 
@@ -62,6 +69,17 @@ export default function Explore() {
   useEffect(() => {
     fetchDogImage();
     fetchBatteryLevel(); // Récupérer le niveau de la batterie
+    const getStoredCount = async () => {
+      try {
+        const storedCount = await AsyncStorage.getItem('dogCount');
+        if (storedCount) {
+          setDogCount(parseInt(storedCount)); // Récupérer le compteur stocké
+        }
+      } catch (error) {
+        console.error('Erreur lors de la récupération du compteur du chien :', error);
+      }
+    };
+    getStoredCount(); // Récupérer le compteur initial à chaque chargement de la page
   }, []);
 
   return (
@@ -105,5 +123,10 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 18,
     color: 'red',
+  },
+  counterText: {
+    fontSize: 18,
+    marginTop: 20,
+    fontWeight: 'bold',
   },
 });
