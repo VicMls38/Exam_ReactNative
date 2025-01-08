@@ -10,11 +10,10 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { HapticTab } from '@/components/HapticTab';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs'; // Importation des types nécessaires
+import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -63,6 +62,10 @@ export default function TabLayout() {
         },
         tabBarIconStyle: {
           marginTop: 5, // Espace entre l'icône et le haut
+          transform: [{ scale: 1 }], // Taille de l'icône
+        },
+        tabBarItemStyle: {
+          borderRadius: 5, // Ajouter un rayon de bordure pour arrondir les onglets
         },
       }}
     >
@@ -71,8 +74,13 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Chat',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cat" size={28} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons
+              name="cat"
+              size={28}
+              color={color}
+              style={{ transform: focused ? [{ scale: 1.2 }] : [{ scale: 1 }] }} // Agrandir l'icône quand l'onglet est actif
+            />
           ),
         }}
       />
@@ -81,8 +89,13 @@ export default function TabLayout() {
         name="chien"
         options={{
           title: 'Chien',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="dog" size={28} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons
+              name="dog"
+              size={28}
+              color={color}
+              style={{ transform: focused ? [{ scale: 1.2 }] : [{ scale: 1 }] }} // Agrandir l'icône quand l'onglet est actif
+            />
           ),
         }}
       />
@@ -91,8 +104,13 @@ export default function TabLayout() {
         name="map"
         options={{
           title: 'Map',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="map" size={28} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons
+              name="map"
+              size={28}
+              color={color}
+              style={{ transform: focused ? [{ scale: 1.2 }] : [{ scale: 1 }] }} // Agrandir l'icône quand l'onglet est actif
+            />
           ),
         }}
       />
@@ -101,8 +119,13 @@ export default function TabLayout() {
         name="counter"
         options={{
           title: 'Count',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="counter" size={28} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons
+              name="counter"
+              size={28}
+              color={color}
+              style={{ transform: focused ? [{ scale: 1.2 }] : [{ scale: 1 }] }} // Agrandir l'icône quand l'onglet est actif
+            />
           ),
         }}
       />
