@@ -34,6 +34,7 @@ Lors d'un exam il fallait créer cette application uniquement avec chatGPT
 
 ## Screenshots
 
+<img src="./images_readme/chat.jpg" alt="Page d'accueil" width="150"/>
 ![Chat](./images_readme/chat.jpg)
 ![Chien](./images_readme/chien.jpg)
 ![Sms](./images_readme/sms.jpg)
