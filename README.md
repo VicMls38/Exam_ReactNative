@@ -34,9 +34,8 @@ Lors d'un exam il fallait créer cette application uniquement avec chatGPT
 
 ## Screenshots
 
-<img src="./images_readme/chat.jpg" alt="Page d'accueil" width="150"/>
-![Chat](./images_readme/chat.jpg)
-![Chien](./images_readme/chien.jpg)
-![Sms](./images_readme/sms.jpg)
-![Map](./images_readme/map.jpg)
-![Counter](./images_readme/counter.jpg)
+<img src="./images_readme/chat.jpg" alt="Chat" width="180"/>
+<img src="./images_readme/chien.jpg" alt="Chien" width="180"/>
+<img src="./images_readme/sms.jpg" alt="Sms" width="180"/>
+<img src="./images_readme/map.jpg" alt="Map" width="180"/>
+<img src="./images_readme/counter.jpg" alt="Counter" width="180"/>
