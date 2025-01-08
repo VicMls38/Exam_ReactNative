@@ -1,11 +1,13 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Platform,
   Alert,
   BackHandler,
   TouchableOpacity,
   GestureResponderEvent,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
@@ -28,6 +30,20 @@ export default function TabLayout() {
       ]
     );
   };
+
+  // Gestion de l'événement BackButton pour quitter l'application
+  useEffect(() => {
+    const backAction = () => {
+      handleExit();
+      return true; // Empêche le comportement par défaut (qui est de revenir en arrière)
+    };
+
+    BackHandler.addEventListener('hardwareBackPress', backAction);
+
+    return () => {
+      BackHandler.removeEventListener('hardwareBackPress', backAction);
+    };
+  }, []);
 
   return (
     <Tabs
@@ -76,17 +92,17 @@ export default function TabLayout() {
         options={{
           title: 'Map',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="map" size={28} color={color} /> // Remplacement par l'icône "map"
+            <MaterialCommunityIcons name="map" size={28} color={color} />
           ),
         }}
       />
-      {/* Onglet Map */}
+      {/* Onglet Count */}
       <Tabs.Screen
         name="counter"
         options={{
           title: 'Count',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="counter" size={28} color={color} /> // Remplacement par l'icône "map"
+            <MaterialCommunityIcons name="counter" size={28} color={color} />
           ),
         }}
       />
@@ -104,6 +120,7 @@ export default function TabLayout() {
                 props.onPress?.(event); // Appelle la fonction par défaut (si définie)
                 handleExit(); // Affiche l'alerte pour quitter
               }}
+              style={props.style as StyleProp<ViewStyle>} // Correctif pour les types
             >
               <MaterialCommunityIcons
                 name="exit-to-app"

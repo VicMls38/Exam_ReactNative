@@ -72,11 +72,6 @@ export default function HomeScreen() {
         </TouchableOpacity>
 
         <Text style={styles.batteryLevelText}>Battery Level: {Math.round(batteryLevel * 100)}%</Text>
-
-        {/* Bouton pour naviguer vers la page "Count" */}
-        <TouchableOpacity onPress={() => navigation.navigate('counter')}>
-          <Text style={styles.linkText}>Go to Count Page</Text>
-        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

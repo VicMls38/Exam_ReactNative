@@ -1,6 +1,7 @@
-# Welcome to your Expo app 👋
+# Application React-Native "Hybrid friend"
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Stack
+React-Native, Expo
 
 ## Get started
 
@@ -16,35 +17,25 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Description
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Lors d'un exam il fallait créer cette application uniquement avec chatGPT 
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+## Fonctionnalités 
 
-When you're ready, run:
+- Splash screen personnalisé 
 
-```bash
-npm run reset-project
-```
+- La page "Chat" contien l'image d'un chat, lorsque l'utilisateur clique sur cette image, un son de chat est joué
+- La page "Chien" contien l'image d'un chien récupéré via une API (image qui change a chaque redémarage de l'app), lorsque l'utilisateur clique sur cette image, un sms est prêt à l'envoi avec comme contenu "Je n'aime pas les chats" avec comme destinataire le 06 06 06 06 06
+- La page "Map" nous affiche une map avec notre localisation qui apparaît via un 'marker' rouge
+- La page "Count" qui affiche les compteurs chien et chat correspondant au nombre de fois que l'image chat ou chien à été cliqué. Cette donnée est stocké, elle permet de la récupèrer à la prochaine réouverture de l'app.
+- Il y a également la possibilité de quitter l'application via le 5 ème logo  de la barre
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Screenshots
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+![Chat](./images_readme/chat.png)
+![Chien](./images_readme/chien.png)
+![Sms](./images_readme/sms.png)
+![Map](./images_readme/map.png)
+![Counter](./images_readme/counter.png)
