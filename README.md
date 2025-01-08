@@ -3,7 +3,7 @@
 ## Stack
 React-Native, Typescript, Expo
 
-## Get started
+## Mode d'emploi
 
 1. Installer les prérequis
 
