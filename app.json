@@ -27,13 +27,19 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/chat_chien_logo",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
       ]
     ],
+    "splash": {
+      "backgroundColor": "#ffffff", 
+      "image": "./assets/images/chat_chien_logo.png", 
+      "resizeMode": "contain",
+      "duration": 3000  
+    },
     "experiments": {
       "typedRoutes": true
     }

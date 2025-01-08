@@ -1,43 +1,75 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Alert, BackHandler } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; // Importation des icônes MaterialCommunityIcons
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+
+  // Fonction pour quitter l'application
+  const handleExit = () => {
+    Alert.alert(
+      "Quitter l'application",
+      "Êtes-vous sûr de vouloir quitter l'application ?",
+      [
+        { text: "Annuler", style: "cancel" },
+        { text: "Quitter", onPress: () => BackHandler.exitApp() }, // Quitte l'application sur Android
+      ]
+    );
+  };
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].text,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
+        tabBarStyle: {
+          height: 60, // Ajuste la hauteur de la barre de navigation
+          backgroundColor: Colors[colorScheme ?? 'light'].background,
+          borderTopWidth: 0,
+          elevation: 10, // Ajoute une ombre (Android uniquement)
+        },
+        tabBarLabelStyle: {
+          fontSize: 12, // Taille de la police des labels
+          marginBottom: 5, // Espace entre le label et l'icône
+        },
+        tabBarIconStyle: {
+          marginTop: 5, // Espace entre l'icône et le haut
+        },
       }}>
+      {/* Onglet Chat (animal) */}
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Chat',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="cat" size={28} color={color} />
+          ),
         }}
       />
+      {/* Onglet Chien */}
       <Tabs.Screen
-        name="explore"
+        name="chien"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Chien',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="dog" size={28} color={color} />
+          ),
+        }}
+      />
+      {/* Onglet Quitter */}
+      <Tabs.Screen
+        name="exit"
+        options={{
+          title: 'Quitter',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="exit-to-app" size={28} color={color} />
+          ),
         }}
       />
     </Tabs>
